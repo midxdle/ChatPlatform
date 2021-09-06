@@ -13,7 +13,6 @@ app.get('/', function(req, res){
 io.on('connection', socket => {
     //socket.emit('request', console.log('request')); // emit an event to the socket
     //io.emit('broadcast', console.log('broad')); // emit an event to all connected sockets
-    console.log('Socket Connected...');
 
     socket.on('new user', (user, cb)=> {
         if(usernames.indexOf(user) != -1){
