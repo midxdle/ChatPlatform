@@ -17,12 +17,13 @@
 		}
 
 		#container{
-			width:700px;
-			margin:0 auto;
+			width: 576px;
+			margin: auto;
 		}
 
 		#chatWindow{
-			height:300px;
+			height: auto;
+			padding:10px;
 		}
 
 		#mainWrapper{
@@ -34,28 +35,34 @@
 			float:left;
 			border:1px #ccc solid;
 			border-radius: 10px;
-			background:#f4f4f4;
+			background:#cec0eb;
 			padding:10px;
+			font-family: "proxima-nova", "Source Sans Pro", sans-serif;
+			
 		}
 
 		#userWrapper{
 			float:left;
 			border:1px #ccc solid;
 			border-radius: 10px;
-			background:#f4f4f4;
+			background:#cec0eb;
 			padding:10px;
 			margin-left:20px;
+			margin-top:10px;
 			width:150px;
 			max-height:200px;
+			font-family: "proxima-nova", "Source Sans Pro", sans-serif;
 		}
 
 		#namesWrapper{
 			float:left;
 			border:1px #ccc solid;
 			border-radius: 10px;
-			background:#f4f4f4;
+			background:#a6deed;
 			padding:10px;
 			margin-left:20px;
+			margin-top:10px;
+			font-family: "proxima-nova", "Source Sans Pro", sans-serif;
 		}
 
 		input{
@@ -115,6 +122,7 @@
             let $users = $('#users');
             let $username = $('#username');
             let $error = $('#error');
+			var j = 0;
 
             $usernameForm.submit((e)=> {
                 e.preventDefault();
@@ -143,9 +151,10 @@
                 socket.emit('send message', $message.val());
                 $message.val('');
             });
-
+			
             socket.on('new message', (data)=> {
                 $chat.append('<strong>'+data.user+'</strong>: '+ data.msg + '<br>');
+				
             });
         });
     </script>
